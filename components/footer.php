@@ -20,22 +20,22 @@
 
       <div class="box">
          <h3>contact us</h3>
-         <a href="tel:1234567890"><i class="fas fa-phone"></i> +123 456 7899</a>
-         <a href="tel:11122233333"><i class="fas fa-phone"></i> +111 222 3333</a>
+         <a href="tel:0938669757"><i class="fas fa-phone"></i> + 0938 669 757</a>
+         <a href="tel:0984609506"><i class="fas fa-phone"></i> + 0984 609 506</a>
          <a href="mailto:longbaoshop@gmail.com"><i class="fas fa-envelope"></i> longbaoshop@gmail.com</a>
          <a href="https://maps.app.goo.gl/4sNgL3vFqdbKLe5Y7"><i class="fas fa-map-marker-alt"></i> Q1,HCM city, VietNam </a>
       </div>
 
       <div class="box">
-         <h3>follow us</h3>
-         <a href="#"><i class="fab fa-facebook-f"></i>Facebook</a>
-         <a href="#"><i class="fab fa-twitter"></i>Twitter</a>
-         <a href="#"><i class="fab fa-instagram"></i>Instagram</a>
-         <a href="#"><i class="fab fa-linkedin"></i>Linkedin</a>
+         <h3>Follow us</h3>
+         <a href="https://www.facebook.com/habaone1601"><i class="fab fa-facebook-f"></i>Facebook</a>
+         <a href="https://twitter.com/"><i class="fab fa-twitter"></i>Twitter</a>
+         <a href="https://www.instagram.com/"><i class="fab fa-instagram"></i>Instagram</a>
+         <a href="https://www.linkedin.com/in/nguy%E1%BB%85n-th%C4%83ng-long-undefined-b61aa4248/"><i class="fab fa-linkedin"></i>Linkedin</a>
       </div>
 
    </section>
 
-   <div class="credit">&copy; Copyright @ <?= date('Y'); ?> by <span></span></div>
+   <div class="credit">&copy; Copyright @ <?= date('Y'); ?> by <span>Nguyen Thang Long and Ha Tran Bao</span></div>
 
 </footer>

@@ -4,10 +4,10 @@ include '../components/connect.php';
 
 session_start();
 
-$admin_id = $_SESSION['admin_id'];
+$admin_id = $_SESSION['user_id'];
 
 if(!isset($admin_id)){
-   header('location:admin_login.php');
+   header('location:user_login.php');
 }
 
 if(isset($_POST['submit'])){
@@ -15,7 +15,7 @@ if(isset($_POST['submit'])){
    $name = $_POST['name'];
    $name = filter_var($name, FILTER_SANITIZE_STRING);
 
-   $update_profile_name = $conn->prepare("UPDATE `admins` SET name = ? WHERE id = ?");
+   $update_profile_name = $conn->prepare("UPDATE `user` SET name = ? WHERE id = ? AND user_type = 'admin'");
    $update_profile_name->execute([$name, $admin_id]);
 
    $empty_pass = 'da39a3ee5e6b4b0d3255bfef95601890afd80709';
@@ -35,7 +35,7 @@ if(isset($_POST['submit'])){
       $message[] = 'confirm password not matched!';
    }else{
       if($new_pass != $empty_pass){
-         $update_admin_pass = $conn->prepare("UPDATE `admins` SET password = ? WHERE id = ?");
+         $update_admin_pass = $conn->prepare("UPDATE `users` SET password = ? WHERE id = ?");
          $update_admin_pass->execute([$confirm_pass, $admin_id]);
          $message[] = 'password updated successfully!';
       }else{
@@ -53,8 +53,10 @@ if(isset($_POST['submit'])){
    <meta charset="UTF-8">
    <meta http-equiv="X-UA-Compatible" content="IE=edge">
    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-   <title>update profile</title>
+   <title>Update profile</title>
 
+   <link rel="shortcut icon" type="image/png" href="/images/logomini.png"/>
+   
    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
 
    <link rel="stylesheet" href="../css/admin_style.css">

@@ -21,6 +21,8 @@ include 'components/wishlist_cart.php';
    <meta http-equiv="X-UA-Compatible" content="IE=edge">
    <meta name="viewport" content="width=device-width, initial-scale=1.0">
    <title>Quick view</title>
+
+   <link rel="shortcut icon" type="image/png" href="/images/logomini.png"/>
    
    <!-- font awesome cdn link  -->
    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
@@ -49,7 +51,6 @@ include 'components/wishlist_cart.php';
       <input type="hidden" name="name" value="<?= $fetch_product['name']; ?>">
       <input type="hidden" name="details" value="<?= $fetch_product['details']; ?>">
       <input type="hidden" name="price" value="<?= $fetch_product['price']; ?>">
-      <input type="hidden" name="available" value="<?= $fetch_product['available']; ?>">
       <input type="hidden" name="image" value="<?= $fetch_product['image_01']; ?>">
       <div class="row">
          <div class="image-container">
@@ -69,7 +70,6 @@ include 'components/wishlist_cart.php';
                <input type="number" name="qty" class="qty" min="1" max="99" onkeypress="if(this.value.length == 2) return false;" value="1">
             </div>
             <a class="category" href="category.php?category=<?= $fetch_product['category']; ?>" class="cat"><?= $fetch_product['category']; ?></a>
-            <div class="available"><?= $fetch_product['available']; ?><span> Available</span></div>
             <div class="details"><?= $fetch_product['details']; ?></div>
             <div class="flex-btn">
                <input type="submit" value="add to cart" class="btn" name="add_to_cart">

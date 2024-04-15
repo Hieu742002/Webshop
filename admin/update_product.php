@@ -4,10 +4,10 @@ include '../components/connect.php';
 
 session_start();
 
-$admin_id = $_SESSION['admin_id'];
+$admin_id = $_SESSION['user_id'];
 
 if(!isset($admin_id)){
-   header('location:admin_login.php');
+   header('location:user_login.php');
 }
 
 if(isset($_POST['update'])){
@@ -21,11 +21,9 @@ if(isset($_POST['update'])){
    $details = filter_var($details, FILTER_SANITIZE_STRING);
    $category = $_POST['category'];
    $category = filter_var($category, FILTER_SANITIZE_STRING);
-   $available = $_POST['available'];
-   $available = filter_var($available, FILTER_SANITIZE_STRING);
    
-   $update_product = $conn->prepare("UPDATE `products` SET name = ?,  category = ?, price = ? , available = ?, details = ? WHERE id = ?");
-   $update_product->execute([$name,$category, $price, $available , $details, $pid]);
+   $update_product = $conn->prepare("UPDATE `products` SET name = ?,  category = ?, price = ?, details = ? WHERE id = ?");
+   $update_product->execute([$name,$category, $price , $details, $pid]);
 
    $message[] = 'product updated successfully!';
 
@@ -96,7 +94,9 @@ if(isset($_POST['update'])){
    <meta charset="UTF-8">
    <meta http-equiv="X-UA-Compatible" content="IE=edge">
    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-   <title>update product</title>
+   <title>Update product</title>
+
+   <link rel="shortcut icon" type="image/png" href="/images/logomini.png"/>
 
    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
 
@@ -146,8 +146,6 @@ if(isset($_POST['update'])){
       </select>
       <span>Update price</span>
       <input type="number" name="price" required class="box" min="0" max="9999999999" placeholder="enter product price" onkeypress="if(this.value.length == 10) return false;" value="<?= $fetch_products['price']; ?>">
-      <span>Update available</span>
-      <input type="number" min="0" max="99999" required placeholder="enter product available" name="available" onkeypress="if(this.value.length == 5) return false;" class="box" value="<?= $fetch_products['available']; ?>">
       <span>Update details</span>
       <textarea name="details" class="box" required cols="30" rows="10"><?= $fetch_products['details']; ?></textarea>
       <span>Update image 01</span>

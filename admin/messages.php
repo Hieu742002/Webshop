@@ -4,10 +4,10 @@ include '../components/connect.php';
 
 session_start();
 
-$admin_id = $_SESSION['admin_id'];
+$admin_id = $_SESSION['user_id'];
 
 if(!isset($admin_id)){
-   header('location:admin_login.php');
+   header('location:user_login.php');
 };
 
 if(isset($_GET['delete'])){
@@ -25,8 +25,10 @@ if(isset($_GET['delete'])){
    <meta charset="UTF-8">
    <meta http-equiv="X-UA-Compatible" content="IE=edge">
    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-   <title>messages</title>
+   <title>Messages</title>
 
+   <link rel="shortcut icon" type="image/png" href="/images/logomini.png"/>
+   
    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
 
    <link rel="stylesheet" href="../css/admin_style.css">
@@ -38,7 +40,7 @@ if(isset($_GET['delete'])){
 
 <section class="contacts">
 
-<h1 class="heading">messages</h1>
+<h1 class="heading">Messages</h1>
 
 <div class="box-container">
 
@@ -49,17 +51,17 @@ if(isset($_GET['delete'])){
          while($fetch_message = $select_messages->fetch(PDO::FETCH_ASSOC)){
    ?>
    <div class="box">
-   <p> user id : <span><?= $fetch_message['user_id']; ?></span></p>
-   <p> name : <span><?= $fetch_message['name']; ?></span></p>
-   <p> email : <span><?= $fetch_message['email']; ?></span></p>
-   <p> number : <span><?= $fetch_message['number']; ?></span></p>
-   <p> message : <span><?= $fetch_message['message']; ?></span></p>
-   <a href="messages.php??delete=<?= $fetch_message['id']; ?>" onclick="return confirm('delete this message?');" class="delete-btn">delete</a>
+   <p> User id : <span><?= $fetch_message['user_id']; ?></span></p>
+   <p> Name : <span><?= $fetch_message['name']; ?></span></p>
+   <p> Email : <span><?= $fetch_message['email']; ?></span></p>
+   <p> Number : <span><?= $fetch_message['number']; ?></span></p>
+   <p> Message : <span><?= $fetch_message['message']; ?></span></p>
+   <a href="messages.php??delete=<?= $fetch_message['id']; ?>" onclick="return confirm('Delete this message?');" class="delete-btn">Delete</a>
    </div>
    <?php
          }
       }else{
-         echo '<p class="empty">you have no messages</p>';
+         echo '<p class="empty">You have no messages</p>';
       }
    ?>
 

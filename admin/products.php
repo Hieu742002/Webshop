@@ -4,10 +4,10 @@ include '../components/connect.php';
 
 session_start();
 
-$admin_id = $_SESSION['admin_id'];
+$admin_id = $_SESSION['user_id'];
 
 if(!isset($admin_id)){
-   header('location:admin_login.php');
+   header('location:user_login.php');
 };
 
 if(isset($_POST['add_product'])){
@@ -20,8 +20,6 @@ if(isset($_POST['add_product'])){
    $details = filter_var($details, FILTER_SANITIZE_STRING);
    $category = $_POST['category'];
    $category = filter_var($category, FILTER_SANITIZE_STRING);
-   $available = $_POST['available'];
-   $available = filter_var($available, FILTER_SANITIZE_STRING);
 
    $image_01 = $_FILES['image_01']['name'];
    $image_01 = filter_var($image_01, FILTER_SANITIZE_STRING);
@@ -48,8 +46,8 @@ if(isset($_POST['add_product'])){
       $message[] = 'product name already exist!';
    }else{
 
-      $insert_products = $conn->prepare("INSERT INTO `products`(name, details, price, category, available, image_01, image_02, image_03) VALUES(?,?,?,?,?,?,?,?)");
-      $insert_products->execute([$name, $details, $price, $category, $available, $image_01, $image_02, $image_03]);
+      $insert_products = $conn->prepare("INSERT INTO `products`(name, details, price, category,  image_01, image_02, image_03) VALUES(?,?,?,?,?,?,?)");
+      $insert_products->execute([$name, $details, $price, $category, $image_01, $image_02, $image_03]);
 
       if($insert_products){
          if($image_size_01 > 2000000 OR $image_size_02 > 2000000 OR $image_size_03 > 2000000){
@@ -94,7 +92,9 @@ if(isset($_GET['delete'])){
    <meta charset="UTF-8">
    <meta http-equiv="X-UA-Compatible" content="IE=edge">
    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-   <title>products</title>
+   <title>Products Manage</title>
+
+   <link rel="shortcut icon" type="image/png" href="/images/logomini.png"/>
 
    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
 
@@ -133,10 +133,6 @@ if(isset($_GET['delete'])){
             <span>Product details </span>
             <textarea name="details" placeholder="Enter product details" class="box" required maxlength="500" cols="30" rows="10"></textarea>
          </div>
-         <div class="inputBox">
-            <span>Product available </span>
-            <input type="number" min="0" class="box" required max="99999" placeholder="Enter product available" onkeypress="if(this.value.length == 10) return false;" name="available">
-         </div>
         <div class="inputBox">
             <span>Image 01 </span>
             <input type="file" name="image_01" accept="image/jpg, image/jpeg, image/png, image/webp" class="box" required>
@@ -174,17 +170,16 @@ if(isset($_GET['delete'])){
       <div class="name"><?= $fetch_products['name']; ?></div>
       <div class="category"><span><?= $fetch_products['category']; ?></span></div>
       <div class="price">$<span><?= $fetch_products['price']; ?></span>/-</div>
-      <div class="available"><span>Available : </span><span><?= $fetch_products['available']; ?></span></div>
       <div class="details"><span><?= $fetch_products['details']; ?></span></div>
       <div class="flex-btn">
          <a href="update_product.php?update=<?= $fetch_products['id']; ?>" class="option-btn">Update</a>
-         <a href="products.php?delete=<?= $fetch_products['id']; ?>" class="delete-btn" onclick="return confirm('delete this product?');">Delete</a>
+         <a href="products.php?delete=<?= $fetch_products['id']; ?>" class="delete-btn" onclick="return confirm('Delete this product?');">Delete</a>
       </div>
    </div>
    <?php
          }
       }else{
-         echo '<p class="empty">no products added yet!</p>';
+         echo '<p class="empty">No products added yet!</p>';
       }
    ?>
    

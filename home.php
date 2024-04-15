@@ -21,19 +21,24 @@ include 'components/wishlist_cart.php';
    <meta http-equiv="X-UA-Compatible" content="IE=edge">
    <meta name="viewport" content="width=device-width, initial-scale=1.0">
    <title>Long Bao Shop</title>
-   <link rel="shortcut icon" href="images/logo (1).png">
+
+   <link rel="shortcut icon" type="image/png" href="/images/logomini.png"/>
+   
    <link rel="stylesheet" href="https://unpkg.com/swiper@8/swiper-bundle.min.css" />
    
-   <!-- font awesome cdn link  -->
+   <!-- Font awesome cdn link  -->
    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
 
-   <!-- custom css file link  -->
+   <!-- Custom css file link  -->
    <link rel="stylesheet" href="css/style.css">
 
 </head>
 <body>
    
+
 <?php include 'components/user_header.php'; ?>
+
+<?php include 'slider.php'; ?>
 
 <div class="home-bg">
 
@@ -48,9 +53,9 @@ include 'components/wishlist_cart.php';
             <img src="images/home-img-1.png" alt="">
          </div>
          <div class="content">
-            <span>upto 50% off</span>
-            <h3>latest smartphones</h3>
-            <a href="shop.php" class="btn">shop now</a>
+            <span>Upto 50% off</span>
+            <h3>Latest Backpack</h3>
+            <a href="shop.php" class="btn">Shopping now</a>
          </div>
       </div>
 
@@ -59,9 +64,9 @@ include 'components/wishlist_cart.php';
             <img src="images/home-img-2.png" alt="">
          </div>
          <div class="content">
-            <span>upto 50% off</span>
-            <h3>latest watches</h3>
-            <a href="shop.php" class="btn">shop now</a>
+            <span>Upto 50% off</span>
+            <h3>Latest Watches</h3>
+            <a href="shop.php" class="btn">Shopping now</a>
          </div>
       </div>
 
@@ -70,9 +75,19 @@ include 'components/wishlist_cart.php';
             <img src="images/home-img-3.png" alt="">
          </div>
          <div class="content">
-            <span>upto 50% off</span>
-            <h3>latest headsets</h3>
-            <a href="shop.php" class="btn">shop now</a>
+            <span>Upto 50% off</span>
+            <h3>Latest Wallet</h3>
+            <a href="shop.php" class="btn">Shopping now</a>
+         </div>
+      </div>
+      <div class="swiper-slide slide">
+         <div class="image">
+            <img src="images/home-img-4.png" alt="">
+         </div>
+         <div class="content">
+            <span>Upto 50% off</span>
+            <h3>Latest Jewelry</h3>
+            <a href="shop.php" class="btn">Shopping now</a>
          </div>
       </div>
 
@@ -88,34 +103,34 @@ include 'components/wishlist_cart.php';
 
 <section class="category">
 
-   <h1 class="heading">shop by category</h1>
+   <h1 class="heading">Shop by category</h1>
 
    <div class="swiper category-slider">
 
    <div class="swiper-wrapper">
 
    <a href="category.php?category=backpack" class="swiper-slide slide">
-      <img src="images/icon-1.png" alt="">
+      <img src="uploaded_img/home-backpack.png" alt="">
       <h3>Backpack</h3>
    </a>
 
    <a href="category.php?category=watch" class="swiper-slide slide">
-      <img src="images/icon-2.png" alt="">
+      <img src="uploaded_img/home-watch.png" alt="">
       <h3>Watch</h3>
    </a>
 
    <a href="category.php?category=wallet" class="swiper-slide slide">
-      <img src="images/icon-3.png" alt="">
+      <img src="uploaded_img/home-wallet.png" alt="">
       <h3>Wallet</h3>
    </a>
 
    <a href="category.php?category=jewelry" class="swiper-slide slide">
-      <img src="images/icon-4.png" alt="">
+      <img src="uploaded_img/home-jewelry.png" alt="">
       <h3>Jewelry</h3>
    </a>
 
    <a href="shop.php" class="swiper-slide slide">
-      <img src="images/icon-8.png" alt="">
+      <img src="uploaded_img/all.png" alt="">
       <h3>All </h3>
    </a>
 
@@ -145,7 +160,6 @@ include 'components/wishlist_cart.php';
       <input type="hidden" name="pid" value="<?= $fetch_product['id']; ?>">
       <input type="hidden" name="name" value="<?= $fetch_product['name']; ?>">
       <input type="hidden" name="price" value="<?= $fetch_product['price']; ?>">
-      <input type="hidden" name="available" value="<?= $fetch_product['available']; ?>">
       <input type="hidden" name="image" value="<?= $fetch_product['image_01']; ?>">
       <button class="fas fa-heart" type="submit" name="add_to_wishlist"></button>
       <a href="quick_view.php?pid=<?= $fetch_product['id']; ?>" class="fas fa-eye"></a>

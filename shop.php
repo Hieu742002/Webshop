@@ -20,8 +20,10 @@ include 'components/wishlist_cart.php';
    <meta charset="UTF-8">
    <meta http-equiv="X-UA-Compatible" content="IE=edge">
    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-   <title>shop</title>
+   <title>Shop</title>
    
+   <link rel="shortcut icon" type="image/png" href="/images/logomini.png"/>
+
    <!-- font awesome cdn link  -->
    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
 
@@ -35,7 +37,7 @@ include 'components/wishlist_cart.php';
 
 <section class="products">
 
-   <h1 class="heading">latest products</h1>
+   <h1 class="heading">Latest products</h1>
    <section class="category1">
 
       <div class="box-container">
@@ -79,7 +81,6 @@ include 'components/wishlist_cart.php';
       <input type="hidden" name="pid" value="<?= $fetch_product['id']; ?>">
       <input type="hidden" name="name" value="<?= $fetch_product['name']; ?>">
       <input type="hidden" name="price" value="<?= $fetch_product['price']; ?>">
-      <input type="hidden" name="available" value="<?= $fetch_product['available']; ?>">
       <input type="hidden" name="image" value="<?= $fetch_product['image_01']; ?>">
       <button class="fas fa-heart" type="submit" name="add_to_wishlist"></button>
       <a href="quick_view.php?pid=<?= $fetch_product['id']; ?>" class="fas fa-eye"></a>
@@ -101,13 +102,6 @@ include 'components/wishlist_cart.php';
    </div>
 
 </section>
-
-
-
-
-
-
-
 
 
 

@@ -33,7 +33,9 @@ if(isset($_GET['delete_all'])){
    <meta charset="UTF-8">
    <meta http-equiv="X-UA-Compatible" content="IE=edge">
    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-   <title>wishlist</title>
+   <title>Wishlist</title>
+   
+   <link rel="shortcut icon" type="image/png" href="/images/logomini.png"/>
    
    <!-- font awesome cdn link  -->
    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
@@ -48,7 +50,7 @@ if(isset($_GET['delete_all'])){
 
 <section class="products">
 
-   <h3 class="heading">your wishlist</h3>
+   <h3 class="heading">Your wishlist</h3>
 
    <div class="box-container">
 
@@ -65,22 +67,21 @@ if(isset($_GET['delete_all'])){
       <input type="hidden" name="wishlist_id" value="<?= $fetch_wishlist['id']; ?>">
       <input type="hidden" name="name" value="<?= $fetch_wishlist['name']; ?>">
       <input type="hidden" name="price" value="<?= $fetch_wishlist['price']; ?>">
-      <input type="hidden" name="available" value="<?= $fetch_wishlist['available']; ?>">
       <input type="hidden" name="image" value="<?= $fetch_wishlist['image']; ?>">
       <a href="quick_view.php?pid=<?= $fetch_wishlist['pid']; ?>" class="fas fa-eye"></a>
       <img src="uploaded_img/<?= $fetch_wishlist['image']; ?>" alt="">
       <div class="name"><?= $fetch_wishlist['name']; ?></div>
       <div class="flex">
          <div class="price">$<?= $fetch_wishlist['price']; ?>/-</div>
-         <input type="number" name="qty" class="qty" min="1" max=<?= $fetch_wishlist['available']; ?> onkeypress="if(this.value.length == 2) return false;" value="1">
+         <input type="number" name="qty" class="qty" min="1" max="99" onkeypress="if(this.value.length == 2) return false;" value="1">
       </div>
       <input type="submit" value="add to cart" class="btn" name="add_to_cart">
-      <input type="submit" value="delete item" onclick="return confirm('delete this from wishlist?');" class="delete-btn" name="delete">
+      <input type="submit" value="delete item" onclick="return confirm('Delete this from wishlist?');" class="delete-btn" name="delete">
    </form>
    <?php
       }
    }else{
-      echo '<p class="empty">your wishlist is empty</p>';
+      echo '<p class="empty">Your wishlist is empty</p>';
    }
    ?>
    </div>

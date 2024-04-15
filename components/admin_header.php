@@ -15,7 +15,7 @@
 
    <section class="flex">
 
-      <a href="../admin/dashboard.php" class="logo"><span>Long Bao Shop </span>AdminPage</a>
+      <a href="../admin/dashboard.php" class="logo"><span>LongBao</span>AdminPage</a>
 
       <nav class="navbar">
          <a href="../admin/dashboard.php">Home</a>
@@ -33,15 +33,15 @@
 
       <div class="profile">
          <?php
-            $select_profile = $conn->prepare("SELECT * FROM `admins` WHERE id = ?");
-            $select_profile->execute([$admin_id]);
-            $fetch_profile = $select_profile->fetch(PDO::FETCH_ASSOC);
+           $select_profile = $conn->prepare("SELECT * FROM `users` WHERE id = ? AND user_type = 'admin' ");
+           $select_profile->execute([$admin_id]);
+           $fetch_profile = $select_profile->fetch(PDO::FETCH_ASSOC);
          ?>
          <p><?= $fetch_profile['name']; ?></p>
          <a href="../admin/update_profile.php" class="btn">Update profile</a>
          <div class="flex-btn">
             <a href="../admin/register_admin.php" class="option-btn">Register</a>
-            <a href="../admin/admin_login.php" class="option-btn">Login</a>
+            <a href="../user_login.php" class="option-btn">Login</a>
          </div>
          <a href="../components/admin_logout.php" class="delete-btn" onclick="return confirm('Logout from the website?');">Logout</a> 
       </div>

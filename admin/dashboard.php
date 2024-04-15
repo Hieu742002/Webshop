@@ -4,11 +4,12 @@ include '../components/connect.php';
 
 session_start();
 
-$admin_id = $_SESSION['admin_id'];
+$admin_id = $_SESSION['user_id'];
 
-if(!isset($admin_id)){
-   header('location:admin_login.php');
-}
+//  if(!isset($admin_id)){
+//     header('location:user_login.php');
+//  }
+
 
 ?>
 
@@ -19,6 +20,8 @@ if(!isset($admin_id)){
    <meta http-equiv="X-UA-Compatible" content="IE=edge">
    <meta name="viewport" content="width=device-width, initial-scale=1.0">
    <title>Long Bao Admin Page</title>
+
+   <link rel="shortcut icon" type="image/png" href="/images/logomini.png"/>
 
    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
 
@@ -108,7 +111,7 @@ if(!isset($admin_id)){
 
       <div class="box">
          <?php
-            $select_admins = $conn->prepare("SELECT * FROM `admins`");
+            $select_admins = $conn->prepare("SELECT * FROM `users` ");
             $select_admins->execute();
             $number_of_admins = $select_admins->rowCount()
          ?>
@@ -125,7 +128,7 @@ if(!isset($admin_id)){
          ?>
          <h3><?= $number_of_messages; ?></h3>
          <p>New messages</p>
-         <a href="messagess.php" class="btn">see messages</a>
+         <a href="messages.php" class="btn">see messages</a>
       </div>
 
    </div>
